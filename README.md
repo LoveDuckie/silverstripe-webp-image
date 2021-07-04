@@ -3,6 +3,12 @@
 [![Build Status](https://travis-ci.org/nomidi/silverstripe-webp-image.svg?branch=master)](https://travis-ci.org/nomidi/silverstripe-webp-image)
 [![License](https://poser.pugx.org/nomidi/silverstripe-webp-image/license)](https://packagist.org/packages/nomidi/silverstripe-webp-image)
 
+## Information
+
+You can read more about the modifications made to this fork, and the reasoning behind it at the link below.
+
+[Tips for Optimizing Page Speeds](https://lucshelton.com/blog/tips-for-optimizing-page-speeds/)
+
 ## Modifications
 
 I've modified this add-on so that `.webp` that are created possess the file name of `file_name_goes_here.<original extension>.webp`. The reason for this is so that the images created can be automatically served in place of their original image assets by using a NGINX configuration such as the one below.
