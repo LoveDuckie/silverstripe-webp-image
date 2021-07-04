@@ -14,7 +14,6 @@ class FlysystemAssetStore extends SS_FlysystemAssetStore
         $this->webp_quality = $this->config()->webp_default_quality;
     }
 
-
     public function setFromString($data, $filename, $hash = null, $variant = null, $config = array())
     {
         $fileID = $this->getFileID($filename, $hash);
@@ -28,10 +27,6 @@ class FlysystemAssetStore extends SS_FlysystemAssetStore
         }
         return parent::setFromString($data, $filename, $hash, $variant, $config);
     }
-
-
-
-
 
     public function setFromLocalFile($path, $filename = null, $hash = null, $variant = null, $config = array())
     {
@@ -49,10 +44,8 @@ class FlysystemAssetStore extends SS_FlysystemAssetStore
 
     public function createWebPImage($path, $filename, $hash, $variant = false)
     {
-        if (function_exists('imagewebp') && function_exists('imagecreatefromjpeg') && function_exists('imagecreatefrompng')) {
+        if (function_exists('imagewebp') && function_exists('imagecreatefromjpeg') && function_exists('imagecreatefrompng') && function_exists('imagecreatefromgif')) {
             $orgpath = './'.$this->getAsURL($filename, $hash, $variant);
-
-
 
             list($width, $height, $type, $attr) = getimagesize($path);
 
@@ -65,7 +58,7 @@ class FlysystemAssetStore extends SS_FlysystemAssetStore
                     $img = imagecreatefrompng($path);
                     imagesavealpha($img, true); // save alphablending setting (important)
                     imagewebp($img, $this->createWebPName($orgpath), $this->webp_quality);
-
+                    break;
             }
             imagedestroy($img);
         }
@@ -76,6 +69,6 @@ class FlysystemAssetStore extends SS_FlysystemAssetStore
         $picname = pathinfo($filename, PATHINFO_FILENAME);
         $directory = pathinfo($filename, PATHINFO_DIRNAME);
         $extension = pathinfo($filename, PATHINFO_EXTENSION);
-        return $directory.'/'.$picname.'_'.$extension.'.webp';
+        return $directory.'/'.$picname.'.'. $extension .'.webp';
     }
 }
