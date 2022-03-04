@@ -1,6 +1,6 @@
 {
-    "name": "nomidi/silverstripe-webp-image",
-    "description": "Create webp image on resize of jpg and png files",
+    "name": "loveduckie/silverstripe-webp-image",
+    "description": "Automatically generate and serve .webp images from existing .jpeg, .png, and .gif files.",
     "keywords": [
         "silverstripe",
         "webp",
@@ -9,9 +9,9 @@
     "version": "1.0.0",
     "type": "silverstripe-vendormodule",
     "authors": [{
-        "name": "Bastian Fritsch",
-        "email": "mail@bastian-fritsch.de",
-        "homepage": "http://www.bastian-fritsch.de/",
+        "name": "Luc Shelton",
+        "email": "lucshelton@gmail.com",
+        "homepage": "http://www.lucshelton.com/",
         "role": "Developer"
         }
         ],
@@ -19,7 +19,7 @@
     "installer-name": "webp-image"
     },
     "support": {
-    "issues": "https://github.com/nomidi/silverstripe-webp-image/issues"
+    "issues": "https://github.com/loveduckie/silverstripe-webp-image/issues"
     },
     "license": "BSD-3-Clause",
     "require": {
