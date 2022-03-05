@@ -10,3 +10,8 @@ After:
 SilverStripe\Core\Injector\Injector:
   SilverStripe\Assets\Storage\AssetStore:
     class: LoveDuckie\SilverStripe\WebPImage\FlysystemAssetStore
+
+
+LoveDuckie\SilverStripe\WebPImage\Config:
+  webp_image_quality: 80
+  enable_queued_job: true

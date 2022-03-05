@@ -44,29 +44,29 @@ class LoveDuckieFlysystemAssetStore extends SS_FlysystemAssetStore
     {
 
         if (!function_exists('imagewebp') || !function_exists('imagecreatefromjpeg') || !function_exists('imagecreatefrompng')) {
-           return;
+            return;
         }
 
-        $orgpath = './'.$this->getAsURL($filename, $hash, $variant);
+        $orgpath = './' . $this->getAsURL($filename, $hash, $variant);
         $webpImageRelativeFilePath = $this->createWebPName($orgpath);
         list($width, $height, $type, $attr) = getimagesize($path);
 
-        switch($type) {
+        switch ($type) {
             case IMAGETYPE_GIF:
                 $img = imagecreatefromgif($path);
                 imagepalettetotruecolor($img);
                 imagesavealpha($img, true); // save alphablending setting (important)
                 imagewebp($img, $webpImageRelativeFilePath, $this->webp_quality);
-            break;
+                break;
             case IMAGETYPE_JPEG:
                 $img = imagecreatefromjpeg($path);
                 imagewebp($img, $webpImageRelativeFilePath, $this->webp_quality);
-            break;
+                break;
             case IMAGETYPE_PNG:
                 $img = imagecreatefrompng($path);
                 imagesavealpha($img, true); // save alphablending setting (important)
                 imagewebp($img, $webpImageRelativeFilePath, $this->webp_quality);
-            break;
+                break;
         }
 
         if ($img != null) {
@@ -79,6 +79,6 @@ class LoveDuckieFlysystemAssetStore extends SS_FlysystemAssetStore
         $picname = pathinfo($filename, PATHINFO_FILENAME);
         $directory = pathinfo($filename, PATHINFO_DIRNAME);
         $extension = pathinfo($filename, PATHINFO_EXTENSION);
-        return $directory.'/'.$picname.'.'.$extension.'.webp';
+        return $directory . '/' . $picname . '.' . $extension . '.webp';
     }
 }
