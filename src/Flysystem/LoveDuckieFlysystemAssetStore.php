@@ -1,11 +1,10 @@
 <?php
 
-
-namespace Nomidi\WebPCreator\Flysystem;
+namespace LoveDuckie\SilverStripe\WebPImage\Flysystem;
 
 use SilverStripe\Assets\Flysystem\FlysystemAssetStore as SS_FlysystemAssetStore;
 
-class FlysystemAssetStore extends SS_FlysystemAssetStore
+class LoveDuckieFlysystemAssetStore extends SS_FlysystemAssetStore
 {
     private static $webp_default_quality = 80;
 
@@ -22,7 +21,7 @@ class FlysystemAssetStore extends SS_FlysystemAssetStore
                 $extension = substr(strrchr($filename, '.'), 1);
                 $tmp_file  = TEMP_PATH . DIRECTORY_SEPARATOR . 'raw_' . uniqid() . '.' . $extension;
                 file_put_contents($tmp_file, $data);
-                $this->createWebPImage($tmp_file, $filename, $hash, $variant, $config);
+                $this->createWebPImage($tmp_file, $fileID, $hash, $variant, $config);
             }
         }
         return parent::setFromString($data, $filename, $hash, $variant, $config);
@@ -38,28 +37,39 @@ class FlysystemAssetStore extends SS_FlysystemAssetStore
             }
         }
 
-        // Submit to conflict check
         return parent::setFromLocalFile($path, $filename, $hash, $variant, $config);
     }
 
     public function createWebPImage($path, $filename, $hash, $variant = false)
     {
-        if (function_exists('imagewebp') && function_exists('imagecreatefromjpeg') && function_exists('imagecreatefrompng') && function_exists('imagecreatefromgif')) {
-            $orgpath = './'.$this->getAsURL($filename, $hash, $variant);
 
-            list($width, $height, $type, $attr) = getimagesize($path);
+        if (!function_exists('imagewebp') || !function_exists('imagecreatefromjpeg') || !function_exists('imagecreatefrompng')) {
+           return;
+        }
 
-            switch ($type) {
-                case 2:
-                    $img = imagecreatefromjpeg($path);
-                    imagewebp($img, $this->createWebPName($orgpath), $this->webp_quality);
-                    break;
-                case 3:
-                    $img = imagecreatefrompng($path);
-                    imagesavealpha($img, true); // save alphablending setting (important)
-                    imagewebp($img, $this->createWebPName($orgpath), $this->webp_quality);
-                    break;
-            }
+        $orgpath = './'.$this->getAsURL($filename, $hash, $variant);
+        $webpImageRelativeFilePath = $this->createWebPName($orgpath);
+        list($width, $height, $type, $attr) = getimagesize($path);
+
+        switch($type) {
+            case IMAGETYPE_GIF:
+                $img = imagecreatefromgif($path);
+                imagepalettetotruecolor($img);
+                imagesavealpha($img, true); // save alphablending setting (important)
+                imagewebp($img, $webpImageRelativeFilePath, $this->webp_quality);
+            break;
+            case IMAGETYPE_JPEG:
+                $img = imagecreatefromjpeg($path);
+                imagewebp($img, $webpImageRelativeFilePath, $this->webp_quality);
+            break;
+            case IMAGETYPE_PNG:
+                $img = imagecreatefrompng($path);
+                imagesavealpha($img, true); // save alphablending setting (important)
+                imagewebp($img, $webpImageRelativeFilePath, $this->webp_quality);
+            break;
+        }
+
+        if ($img != null) {
             imagedestroy($img);
         }
     }
@@ -69,6 +79,6 @@ class FlysystemAssetStore extends SS_FlysystemAssetStore
         $picname = pathinfo($filename, PATHINFO_FILENAME);
         $directory = pathinfo($filename, PATHINFO_DIRNAME);
         $extension = pathinfo($filename, PATHINFO_EXTENSION);
-        return $directory.'/'.$picname.'.'. $extension .'.webp';
+        return $directory.'/'.$picname.'.'.$extension.'.webp';
     }
 }

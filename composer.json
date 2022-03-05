@@ -18,6 +18,11 @@
     "extra": {
     "installer-name": "webp-image"
     },
+    "autoload": {
+        "psr-4": {
+            "LoveDuckie\\SilverStripe\\WebPImage\\": "src/"
+        }
+    },
     "support": {
     "issues": "https://github.com/loveduckie/silverstripe-webp-image/issues"
     },
