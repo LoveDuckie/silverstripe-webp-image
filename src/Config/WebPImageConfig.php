@@ -25,4 +25,9 @@ class WebPImageConfig
             $this->configInstance = Config::inst()->get(self::class);
         }
     }
+
+    public function getWebPImageQuality()
+    {
+        return null;
+    }
 }

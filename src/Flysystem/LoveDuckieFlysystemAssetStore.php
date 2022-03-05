@@ -56,20 +56,20 @@ class LoveDuckieFlysystemAssetStore extends SS_FlysystemAssetStore
                 $img = imagecreatefromgif($path);
                 imagepalettetotruecolor($img);
                 imagesavealpha($img, true); // save alphablending setting (important)
-                imagewebp($img, $webpImageRelativeFilePath, $this->webp_quality);
+                // imagewebp($img, $webpImageRelativeFilePath, $this->webp_quality);
                 break;
             case IMAGETYPE_JPEG:
                 $img = imagecreatefromjpeg($path);
-                imagewebp($img, $webpImageRelativeFilePath, $this->webp_quality);
+                // imagewebp($img, $webpImageRelativeFilePath, $this->webp_quality);
                 break;
             case IMAGETYPE_PNG:
                 $img = imagecreatefrompng($path);
                 imagesavealpha($img, true); // save alphablending setting (important)
-                imagewebp($img, $webpImageRelativeFilePath, $this->webp_quality);
                 break;
         }
 
-        if ($img != null) {
+        if ($img) {
+            imagewebp($img, $webpImageRelativeFilePath, $this->webp_quality);
             imagedestroy($img);
         }
     }
