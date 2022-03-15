@@ -19,3 +19,5 @@ LoveDuckie\SilverStripe\WebPImage\Config:
 SilverStripe\Assets\Storage\DBFile:
   supported_images:
     - 'image/webp'
+  extensions:
+    - LoveDuckie\SilverStripe\WebPImage\Extensions\DBFileExtension
