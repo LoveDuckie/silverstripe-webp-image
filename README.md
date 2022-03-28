@@ -44,7 +44,7 @@ This module creates webp images from resized jpeg and png images. More Informati
 
 ## Installation
 
-```sh
+```shell
 composer require loveduckie/silverstripe-webp-image
 ```
 
@@ -70,7 +70,6 @@ if (function_exists(imagewebp)) {
 } else {
     echo "WebP is not available";
 }
-
 ```
 
 ## TODO
