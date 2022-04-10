@@ -8,15 +8,16 @@
     ],
     "version": "1.0.1",
     "type": "silverstripe-vendormodule",
-    "authors": [{
-        "name": "Luc Shelton",
-        "email": "lucshelton@gmail.com",
-        "homepage": "https://lucshelton.com/",
-        "role": "Developer"
+    "authors": [
+        {
+            "name": "Luc Shelton",
+            "email": "lucshelton@gmail.com",
+            "homepage": "https://www.lucshelton.com",
+            "role": "Developer"
         }
-        ],
+    ],
     "extra": {
-    "installer-name": "webp-image"
+        "installer-name": "webp-image"
     },
     "autoload": {
         "psr-4": {
@@ -24,7 +25,8 @@
         }
     },
     "support": {
-    "issues": "https://github.com/loveduckie/silverstripe-webp-image/issues"
+        "email": "lucshelton@gmail.com",
+        "issues": "https://github.com/loveduckie/silverstripe-webp-image/issues"
     },
     "license": "BSD-3-Clause",
     "require": {
