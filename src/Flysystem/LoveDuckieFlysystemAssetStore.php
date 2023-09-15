@@ -8,6 +8,8 @@ class LoveDuckieFlysystemAssetStore extends SS_FlysystemAssetStore
 {
     private static $webp_default_quality = 80;
 
+    private int $webp_quality;
+
     public function __construct()
     {
         $this->webp_quality = $this->config()->webp_default_quality;
