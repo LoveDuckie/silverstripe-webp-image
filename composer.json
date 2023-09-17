@@ -16,6 +16,10 @@
             "role": "Developer"
         }
     ],
+    "support": {
+        "email": "lucshelton@gmail.com",
+        "issues": "https://github.com/loveduckie/silverstripe-webp-image/issues"
+    },
     "extra": {
         "installer-name": "webp-image"
     },
@@ -23,10 +27,6 @@
         "psr-4": {
             "LoveDuckie\\SilverStripe\\WebPImage\\": "src/"
         }
-    },
-    "support": {
-        "email": "lucshelton@gmail.com",
-        "issues": "https://github.com/loveduckie/silverstripe-webp-image/issues"
     },
     "license": "BSD-3-Clause",
     "require": {
