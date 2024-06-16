@@ -25,7 +25,7 @@
     },
     "autoload": {
         "psr-4": {
-            "LoveDuckie\\Silverstripe\\WebPImage\\": "src/"
+            "LoveDuckie\\Silverstripe\\WebPImage\\": "src/",
             "LoveDuckie\\Silverstripe\\WebPImage\\Tests\\": "tests/"
         }
     },
