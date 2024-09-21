@@ -6,7 +6,6 @@
         "webp",
         "image"
     ],
-    "version": "1.0.1",
     "type": "silverstripe-vendormodule",
     "authors": [
         {
