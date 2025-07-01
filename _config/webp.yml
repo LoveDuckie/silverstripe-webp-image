@@ -1,12 +1,11 @@
-SilverStripe\Assets\File:
-  allowed_extensions:
-    - webp
 ---
 Name: loveduckie-flysystemassetstore
 After:
   - "assetscore"
-  - "assetstore"
 ---
+SilverStripe\Assets\File:
+  allowed_extensions:
+    - webp
 SilverStripe\Core\Injector\Injector:
   SilverStripe\Assets\Storage\AssetStore:
     class: LoveDuckie\SilverStripe\WebPImage\Flysystem\LoveDuckieFlysystemAssetStore

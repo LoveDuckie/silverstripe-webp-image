@@ -38,9 +38,9 @@ AddHandler default-handler php phtml php3 php4 php5 inc
   # Check if browser support WebP images
   RewriteCond %{HTTP_ACCEPT} image/webp
   # Check if WebP replacement image exists
-  RewriteCond %{DOCUMENT_ROOT}/assets/$1_$2.webp -f
+  RewriteCond %{DOCUMENT_ROOT}/assets/$1.$2.webp -f
   # Serve WebP image instead
-  RewriteRule (.+)\.(jpe?g|JPE?G|png)$ $1_$2.webp [T=image/webp,E=accept:1]
+  RewriteRule (.+)\\.(jpe?g|JPE?G|png)$ /assets/$1.$2.webp [T=image/webp,E=accept:1]
 </IfModule>
 
 <IfModule mod_headers.c>

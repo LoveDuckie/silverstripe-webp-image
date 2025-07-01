@@ -81,7 +81,7 @@ This setup detects browsers that support WebP via the `Accept` header and serves
 
 ### Apache `.htaccess` Configuration
 
-For Apache users, add rules to prioritize `.webp` files in your `.htaccess`. For detailed instructions, see [CSS-Tricks' guide](https://css-tricks.com/using-webp-images/).
+For Apache users, add rules to prioritize `.webp` files in your `.htaccess`. This module will automatically update the .htaccess in the public/assets folder on build. [See the template here](templates/SilverStripe/Assets/Flysystem/PublicAssetAdapter_HTAccess.ss)
 
 ## Testing WebP Support
 
